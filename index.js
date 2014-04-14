@@ -1,9 +1,6 @@
-var t = {}
-var _ = require('lodash'),
-    featurecollection = require('./featurecollection'),
-    point = require('./point')
-t.featurecollection = featurecollection
-t.point = point
+var flatten = require('flatten')
+var featureCollection = require('turf-featurecollection')
+var point = require('turf-point')
 
 module.exports = function(features, done){
   var coordinates = []
@@ -82,8 +79,15 @@ module.exports = function(features, done){
   return fc
 }
 
-
-
+function flatCoords(coords){
+  var newCoords = []
+  coords = flatten(coords)
+  coords.forEach(function(c, i){
+    if(i % 2 == 0) // if is even
+    newCoords.push([c, coords[i+1]])
+  })
+  return newCoords
+}
 
 
 
