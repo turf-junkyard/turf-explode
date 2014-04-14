@@ -34,7 +34,7 @@ module.exports = function(features, done){
           break
       }
       if(!features.features[i].geometry && features.features[i].properties){
-        throw new Error('Unknown Geometry Type')
+        return new Error('Unknown Geometry Type')
       }
     }
     coordinates = _.flatten(coordinates, true)
@@ -72,14 +72,14 @@ module.exports = function(features, done){
         break
     }
     if(!geometry){
-      throw new Error('No Geometry Found')
+      return new Error('No Geometry Found')
     }
   }
   var fc = t.featurecollection([])
   _.each(coordinates, function(c){
     fc.features.push(t.point(c[0], c[1]))
   })
-  done(null, fc)
+  return fc
 }
 
 
