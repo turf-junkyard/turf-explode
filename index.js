@@ -32,24 +32,15 @@ module.exports = function(fc){
       if(!fc.features[i].geometry && fc.features[i].properties){
         return new Error('Unknown Geometry Type')
       }
-      
-      for(var n in coordinates){
-        if(xmin > coordinates[n][0]){
-          xmin = coordinates[n][0]
-        }
-        if(ymin > coordinates[n][1]){
-          ymin = coordinates[n][1]
-        }
-        if(xmax < coordinates[n][0]){
-          xmax = coordinates[n][0]
-        }
-        if(ymax < coordinates[n][1]){
-          ymax = coordinates[n][1]
-        }
-      }
     }
-    var bbox = [xmin, ymin, xmax, ymax]
-    return bbox
+      
+    var exploded = featureCollection([])
+
+    coordinates.forEach(function(coords){
+      exploded.features.push(point(coords[0], coords[1]))
+    })
+
+    return exploded
   }
   else{
     var coordinates 
