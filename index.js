@@ -2,47 +2,63 @@ var flatten = require('flatten')
 var featureCollection = require('turf-featurecollection')
 var point = require('turf-point')
 
-module.exports = function(features, done){
-  var coordinates = []
-  if(features.type === 'FeatureCollection'){
-    for(var i in features.features){
-      switch(features.features[i].geometry.type){
+module.exports = function(fc){
+  if(fc.type === 'FeatureCollection'){
+    for(var i in fc.features){
+      var coordinates 
+      switch(fc.features[i].geometry.type){
         case 'Point':
-          coordinates.push([features.features[i].geometry.coordinates])
+          coordinates = [fc.features[i].geometry.coordinates]
           break
         case 'LineString':
-          coordinates.push(features.features[i].geometry.coordinates)
+          coordinates = fc.features[i].geometry.coordinates
           break
         case 'Polygon':
-          coordinates.push(features.features[i].geometry.coordinates)
-          coordinates.push(_.flatten(coordinates, true))
+          coordinates = fc.features[i].geometry.coordinates
+          coordinates = flatCoords(coordinates)
           break
         case 'MultiPoint':
-          coordinates.push(features.features[i].geometry.coordinates)
+          coordinates = fc.features[i].geometry.coordinates
           break
         case 'MultiLineString':
-          coordinates.push(features.features[i].geometry.coordinates)
-          coordinates.push(_.flatten(coordinates, true))
+          coordinates = fc.features[i].geometry.coordinates
+          coordinates = flatCoords(coordinates)
           break
         case 'MultiPolygon':
-          coordinates.push(features.features[i].geometry.coordinates)
-          coordinates.push(_.flatten(coordinates, true))
-          coordinates.push(_.flatten(coordinates, true))
+          coordinates = fc.features[i].geometry.coordinates
+          coordinates = flatCoords(coordinates)
           break
       }
-      if(!features.features[i].geometry && features.features[i].properties){
+      if(!fc.features[i].geometry && fc.features[i].properties){
         return new Error('Unknown Geometry Type')
       }
+      
+      for(var n in coordinates){
+        if(xmin > coordinates[n][0]){
+          xmin = coordinates[n][0]
+        }
+        if(ymin > coordinates[n][1]){
+          ymin = coordinates[n][1]
+        }
+        if(xmax < coordinates[n][0]){
+          xmax = coordinates[n][0]
+        }
+        if(ymax < coordinates[n][1]){
+          ymax = coordinates[n][1]
+        }
+      }
     }
-    coordinates = _.flatten(coordinates, true)
+    var bbox = [xmin, ymin, xmax, ymax]
+    return bbox
   }
   else{
+    var coordinates 
     var geometry
-    if(features.type === 'Feature'){
-      geometry = features.geometry
+    if(fc.type === 'Feature'){
+      geometry = fc.geometry
     }
     else{
-      geometry = features
+      geometry = fc
     }
     switch(geometry.type){
       case 'Point':
@@ -53,30 +69,32 @@ module.exports = function(features, done){
         break
       case 'Polygon':
         coordinates = geometry.coordinates
-        coordinates = _.flatten(coordinates, true)
+        coordinates = flatCoords(coordinates)
         break
       case 'MultiPoint':
         coordinates = geometry.coordinates
         break
       case 'MultiLineString':
         coordinates = geometry.coordinates
-        coordinates = _.flatten(coordinates, true)
+        coordinates = flatCoords(coordinates)
         break
       case 'MultiPolygon':
         coordinates = geometry.coordinates
-        coordinates = _.flatten(coordinates, true)
-        coordinates = _.flatten(coordinates, true)
+        coordinates = flatCoords(coordinates)
         break
     }
     if(!geometry){
       return new Error('No Geometry Found')
     }
+
+    var exploded = featureCollection([])
+
+    coordinates.forEach(function(coords){
+      exploded.features.push(point(coords[0], coords[1]))
+    })
+
+    return exploded
   }
-  var fc = t.featurecollection([])
-  _.each(coordinates, function(c){
-    fc.features.push(t.point(c[0], c[1]))
-  })
-  return fc
 }
 
 function flatCoords(coords){
@@ -88,6 +106,3 @@ function flatCoords(coords){
   })
   return newCoords
 }
-
-
-
