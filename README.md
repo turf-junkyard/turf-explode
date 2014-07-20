@@ -10,7 +10,7 @@ var polygon = require('turf-polygon')
 
 var poly = polygon([[[0,0], [0,10], [10,10] , [10,0]]])
 
-var vertices = explode(poly, function(err, vertices){
+var vertices = explode(poly)
 
 console.log(vertices)
 ```
