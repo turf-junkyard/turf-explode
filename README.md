@@ -4,6 +4,26 @@ turf-explode
 
 Takes a Feature or FeatureCollection and return all vertices as a collection of points.
 
+###Install
+
+```sh
+npm install turf-explode
+```
+
+###Parameters
+
+|name|description|
+|---|---|
+|fc|a geojson feature or featurecollection|
+
+###Usage
+
+```js
+explode(fc)
+```
+
+###Example
+
 ```javascript
 var explode = require('turf-explode')
 var polygon = require('turf-polygon')
