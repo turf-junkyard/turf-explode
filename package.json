@@ -23,14 +23,14 @@
   },
   "homepage": "https://github.com/morganherlocker/turf-explode",
   "devDependencies": {
-    "tape": "^2.12.3",
+    "tape": "^2.13.4",
     "turf-featurecollection": "^0.1.0",
-    "turf-point": "^0.1.0",
-    "turf-polygon": "^0.1.0"
+    "turf-point": "^0.1.1",
+    "turf-polygon": "^0.1.1"
   },
   "dependencies": {
     "flatten": "0.0.1",
     "turf-featurecollection": "^0.1.0",
-    "turf-point": "^0.1.0"
+    "turf-point": "^0.1.1"
   }
 }
