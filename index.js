@@ -1,4 +1,3 @@
-var flatten = require('flatten');
 var featureCollection = require('turf-featurecollection');
 var point = require('turf-point');
 
