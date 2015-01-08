@@ -9,8 +9,11 @@ var point = require('turf-point');
  * @param {GeoJSON} input
  * @return {FeatureCollection} output
  * @example
- * var poly = polygon([[[0,0], [0,10], [10,10] , [10,0]]])
- * console.log(turf.explode(poly));
+ * var poly = turf.polygon([
+ *   [[0,0], [0,10], [10,10] , [10,0], [0, 0]]], {});
+ * //=poly
+ * var points = turf.explode(poly);
+ * //=points
  */
 module.exports = function(layer){
 
