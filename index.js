@@ -2,7 +2,7 @@ var featureCollection = require('turf-featurecollection');
 var point = require('turf-point');
 
 /**
- * Takes a Feature or FeatureCollection and return all positions as
+ * Takes a {@link Feature} or {@link FeatureCollection} and return all positions as
  * a collection of {@link Point|Points}.
  *
  * @module turf/explode
