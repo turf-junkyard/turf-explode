@@ -6,13 +6,16 @@ var point = require('turf-point');
  * a collection of {@link Point|Points}.
  *
  * @module turf/explode
- * @param {GeoJSON} input
- * @return {FeatureCollection} output
+ * @param {GeoJSON} input input features
+ * @return {FeatureCollection} a FeatureCollection of Point features representing the exploded input features
  * @example
  * var poly = turf.polygon([
  *   [[0,0], [0,10], [10,10] , [10,0], [0, 0]]], {});
  * //=poly
  * var points = turf.explode(poly);
+ *
+ * //=poly
+ *
  * //=points
  */
 module.exports = function(layer){
