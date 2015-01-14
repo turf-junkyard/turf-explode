@@ -40,7 +40,7 @@ module.exports = function(layer){
         depth3(coords, points);
         break;
       default:
-        return new Error('Unknown Geometry Type');
+        throw new Error('Unknown Geometry Type');
     }
   }
   return featureCollection(points);

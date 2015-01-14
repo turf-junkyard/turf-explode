@@ -17,5 +17,9 @@ test('explode', function(t){
   t.ok(exploded.features, 'should take a feature or feature collection and return all vertices');
   t.deepEqual(exploded, fc);
 
+  t.throws(function() {
+      explode({});
+  }, /Unknown Geometry Type/);
+
   t.end();
-})
+});
