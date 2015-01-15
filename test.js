@@ -1,5 +1,6 @@
 var test = require('tape');
 var polygon = require('turf-polygon');
+var linestring = require('turf-linestring');
 var point = require('turf-point');
 var featurecollection = require('turf-featurecollection');
 var explode = require('./');
@@ -16,6 +17,12 @@ test('explode', function(t){
 
   t.ok(exploded.features, 'should take a feature or feature collection and return all vertices');
   t.deepEqual(exploded, fc);
+  t.deepEqual(explode(point(0,0)), featurecollection([point(0,0)]), 'explode a single point');
+  t.deepEqual(explode(featurecollection([point(0,0)])), featurecollection([point(0,0)]), 'explode a single point in a featurecollection');
+  t.deepEqual(explode(polygon([[[0,0],[1,1],[0,1],[0,0]]])),
+    featurecollection([point(0,0), point(1,1), point(0,1), point(0,0)]), 'explode a polygon');
+  t.deepEqual(explode(linestring([[0,0],[1,1],[0,1],[0,0]])),
+    featurecollection([point(0,0), point(1,1), point(0,1), point(0,0)]), 'explode a linestring');
 
   t.throws(function() {
       explode({});
