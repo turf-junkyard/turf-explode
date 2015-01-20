@@ -25,13 +25,12 @@
   "devDependencies": {
     "benchmark": "^1.0.0",
     "tape": "^2.13.4",
-    "turf-featurecollection": "^0.1.0",
     "turf-linestring": "^1.0.0",
-    "turf-point": "^0.1.1",
     "turf-polygon": "^0.1.1"
   },
   "dependencies": {
     "turf-featurecollection": "^0.1.0",
-    "turf-point": "^0.1.1"
+    "turf-meta": "^1.0.1",
+    "turf-point": "^1.2.1"
   }
 }

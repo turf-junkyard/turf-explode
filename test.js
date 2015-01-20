@@ -1,9 +1,9 @@
 var test = require('tape');
 var polygon = require('turf-polygon');
 var linestring = require('turf-linestring');
-var point = require('turf-point');
+var point = require('../turf-point');
 var featurecollection = require('turf-featurecollection');
-var explode = require('./');
+var explode = require('./index');
 
 test('explode', function(t){
   var poly = polygon([[[0,0], [0,10], [10,10], [10,0], [0,0]]]);
