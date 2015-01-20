@@ -1,7 +1,7 @@
 var test = require('tape');
 var polygon = require('turf-polygon');
 var linestring = require('turf-linestring');
-var point = require('../turf-point');
+var point = require('turf-point');
 var featurecollection = require('turf-featurecollection');
 var explode = require('./index');
 
