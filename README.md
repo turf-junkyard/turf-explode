@@ -1,36 +1,48 @@
-turf-explode
-============
-[![Build Status](https://travis-ci.org/Turfjs/turf-explode.svg?branch=master)](https://travis-ci.org/Turfjs/turf-explode)
+# turf-explode
 
-Takes a Feature or FeatureCollection and return all vertices as a collection of points.
+[![build status](https://secure.travis-ci.org/morganherlocker/turf-explode.png)](http://travis-ci.org/morganherlocker/turf-explode)
 
-###Install
+turf explode module
 
-```sh
-npm install turf-explode
-```
 
-###Parameters
+### `turf.explode(input)`
 
-|name|description|
-|---|---|
-|fc|a geojson feature or featurecollection|
+Takes any GeoJSON object and return all positions as
+a collection of {@link Point|Points}.
 
-###Usage
+
+* `input` (`GeoJSON`): input features
 
 ```js
-explode(fc)
+var poly = turf.polygon([[
+ [177.396755, -17.795112],
+ [177.422161, -17.783506],
+ [177.439155, -17.799851],
+ [177.426624, -17.826164],
+ [177.404651, -17.836459],
+ [177.385425, -17.812926],
+ [177.381134, -17.797563],
+ [177.396755, -17.795112]
+]]);
+
+var points = turf.explode(poly);
+
+//=poly
+
+//=points
 ```
 
-###Example
+## Installation
 
-```javascript
-var explode = require('turf-explode')
-var polygon = require('turf-polygon')
+Requires [nodejs](http://nodejs.org/).
 
-var poly = polygon([[[0,0], [0,10], [10,10] , [10,0]]])
-
-var vertices = explode(poly)
-
-console.log(vertices)
+```sh
+$ npm install turf-explode
 ```
+
+## Tests
+
+```sh
+$ npm test
+```
+

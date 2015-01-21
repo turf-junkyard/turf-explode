@@ -3,7 +3,7 @@ var each = require('turf-meta').coordEach;
 var point = require('turf-point');
 
 /**
- * Takes any {@link GeoJSON} objecT and return all positions as
+ * Takes any {@link GeoJSON} object and return all positions as
  * a collection of {@link Point|Points}.
  *
  * @module turf/explode
