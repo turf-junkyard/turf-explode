@@ -1,6 +1,6 @@
 # turf-explode
 
-[![build status](https://secure.travis-ci.org/morganherlocker/turf-explode.png)](http://travis-ci.org/morganherlocker/turf-explode)
+[![build status](https://secure.travis-ci.org/Turfjs/turf-explode.png)](http://travis-ci.org/Turfjs/turf-explode)
 
 turf explode module
 
@@ -8,21 +8,27 @@ turf explode module
 ### `turf.explode(input)`
 
 Takes any GeoJSON object and return all positions as
-a collection of {@link Point|Points}.
+a FeatureCollection of Point features.
 
 
-* `input` (`GeoJSON`): input features
+### Parameters
+
+| parameter | type    | description    |
+| --------- | ------- | -------------- |
+| `input`   | GeoJSON | input features |
+
+
+### Example
 
 ```js
 var poly = turf.polygon([[
- [177.396755, -17.795112],
- [177.422161, -17.783506],
- [177.439155, -17.799851],
- [177.426624, -17.826164],
- [177.404651, -17.836459],
- [177.385425, -17.812926],
- [177.381134, -17.797563],
- [177.396755, -17.795112]
+ [177.434692, -17.77517],
+ [177.402076, -17.779093],
+ [177.38079, -17.803937],
+ [177.40242, -17.826164],
+ [177.438468, -17.824857],
+ [177.454948, -17.796746],
+ [177.434692, -17.77517]
 ]]);
 
 var points = turf.explode(poly);
