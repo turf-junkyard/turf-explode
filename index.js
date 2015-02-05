@@ -7,6 +7,7 @@ var point = require('turf-point');
  * a {@link FeatureCollection} of {@link Point} features.
  *
  * @module turf/explode
+ * @category misc
  * @param {GeoJSON} input input features
  * @return {FeatureCollection} a FeatureCollection of {@link Point} features representing the exploded input features
  * @throws {Error} if it encounters an unknown geometry type
