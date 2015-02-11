@@ -32,6 +32,7 @@
     "doxme": "^1.4.2"
   },
   "dependencies": {
+    "geojson-fixtures": "^0.6.0",
     "turf-featurecollection": "^1.0.0",
     "turf-meta": "^1.0.1",
     "turf-point": "^2.0.0"
