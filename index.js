@@ -3,13 +3,13 @@ var each = require('turf-meta').coordEach;
 var point = require('turf-point');
 
 /**
- * Takes any {@link GeoJSON} object and return all positions as
- * a {@link FeatureCollection} of {@link Point} features.
+ * Takes a feature or set of features and returns all positions as
+ * points.
  *
  * @module turf/explode
  * @category misc
- * @param {GeoJSON} input input features
- * @return {FeatureCollection} a FeatureCollection of {@link Point} features representing the exploded input features
+ * @param {(Feature<(Point|LineString|Polygon)>|FeatureCollection<(Point|LineString|Polygon)>)} input input features
+ * @return {FeatureCollection<point>} points representing the exploded input features
  * @throws {Error} if it encounters an unknown geometry type
  * @example
  * var poly = {
