@@ -8,7 +8,7 @@ var point = require('turf-point');
  *
  * @module turf/explode
  * @category misc
- * @param {(Feature<(Point|LineString|Polygon)>|FeatureCollection<(Point|LineString|Polygon)>)} input input features
+ * @param {(Feature|FeatureCollection)} input input features
  * @return {FeatureCollection<point>} points representing the exploded input features
  * @throws {Error} if it encounters an unknown geometry type
  * @example
