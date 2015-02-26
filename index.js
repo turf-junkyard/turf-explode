@@ -4,7 +4,7 @@ var point = require('turf-point');
 
 /**
  * Takes a feature or set of features and returns all positions as
- * points.
+ * {@link Point|points}.
  *
  * @module turf/explode
  * @category misc
