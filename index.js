@@ -35,9 +35,9 @@ var point = require('turf-point');
  *
  * //=points
  */
-module.exports = function(layer) {
+module.exports = function (layer) {
   var points = [];
-  each(layer, function(coord) {
+  each(layer, function (coord) {
     points.push(point(coord));
   });
   return featureCollection(points);
